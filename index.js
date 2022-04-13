@@ -19,7 +19,7 @@ app.use("/api/user", UsersRouter);
 app.use("/api/session", SessionRouter);
 app.use("/api/opportunity", OpportunitiesRouter);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 6000;
 app.listen(PORT, () => {
   console.log(`Mentorpoint Server is running on port ${PORT}.`);
 });
