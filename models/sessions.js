@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 const sessionsSchema = new mongoose.Schema(
   {
-    user_id: { type: String, required: true, unique: true },
+    user_id: { type: mongoose.Types.ObjectId, required: true },
+    mentor_id: { type: String, required: true },
+    mentor_name: { type: String },
     start_time: { type: Date, required: true },
     end_time: { type: Date, required: true },
     date: { type: Date, required: true },

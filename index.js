@@ -16,10 +16,12 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/api/user", UsersRouter);
-app.use("/api/session", SessionRouter);
+app.use("/api/sessions", SessionRouter);
 app.use("/api/opportunity", OpportunitiesRouter);
-
-const PORT = process.env.PORT || 6000;
-app.listen(PORT, () => {
+app.get("/", (req, res) => {
+  res.send("Mentorpoint");
+});
+const PORT = process.env.PORT || 5000;
+app.listen(5000, () => {
   console.log(`Mentorpoint Server is running on port ${PORT}.`);
 });
