@@ -5,6 +5,7 @@ const usersSchema = new mongoose.Schema(
     name: { type: String, required: true, trim: true },
     bio: { type: String, required: true },
     address: { type: String, trim: true },
+    company: "",
     mobile_number: {
       type: String,
       trim: true,
@@ -13,7 +14,6 @@ const usersSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
       unique: true,
       lowercase: true,
       trim: true,
