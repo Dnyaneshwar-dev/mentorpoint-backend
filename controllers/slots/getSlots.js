@@ -1,15 +1,14 @@
-import opportunitiesSchema from "../../models/opportunities.js";
 import {
-  sendFailResponse,
   sendSuccessResponse,
+  sendFailResponse,
 } from "../../utils/responses.js";
+import slotsSchema from "../../models/slots.js";
 
-export const getOpportunities = async (req, res) => {
+export const getSlots = async (req, res) => {
   try {
-    let query = req?.query || {};
+    const query = req?.body || {};
 
-    let data = await opportunitiesSchema.find(query);
-
+    const data = await slotsSchema.find(query).populate("mentor_id");
     sendSuccessResponse({
       res,
       data,

@@ -6,19 +6,14 @@ import {
 
 export const getSessions = async (req, res) => {
   try {
-    let query = req?.query?.body || {};
-
-    if (!query?.is_deleted) {
-      query = { ...query, is_deleted: false };
-    }
-
-    let sessions = await sessionsSchema.find(query);
-
+    const query = req?.body || {};
+    const data = await sessionsSchema.find(query).populate("service_id");
     sendSuccessResponse({
       res,
-      data: sessions,
+      data,
     });
   } catch (err) {
+    console.log(err);
     sendFailResponse({
       res,
       message: err?.message,

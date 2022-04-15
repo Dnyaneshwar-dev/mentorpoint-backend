@@ -1,15 +1,14 @@
-import opportunitiesSchema from "../../models/opportunities.js";
+import mongoose from "mongoose";
 import {
   sendFailResponse,
   sendSuccessResponse,
 } from "../../utils/responses.js";
+import slotsSchema from "../../models/slots.js";
 
-export const getOpportunities = async (req, res) => {
+export const addSlots = async (req, res) => {
   try {
-    let query = req?.query || {};
-
-    let data = await opportunitiesSchema.find(query);
-
+    const slotsToAdd = req?.body;
+    let data = await slotsSchema.create(slotsToAdd);
     sendSuccessResponse({
       res,
       data,

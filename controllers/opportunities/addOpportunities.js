@@ -7,23 +7,9 @@ import {
 
 export const addOpportunities = async (req, res) => {
   try {
-    let opportunityToAdd = req?.body?.opportunity;
-    let _id = opportunityToAdd?._id;
+    let data = req?.body;
 
-    if (!_id) {
-      _id = mongoose.Types.ObjectId();
-    }
-
-    let result = await opportunitiesSchema.findOneAndUpdate(
-      { _id },
-      opportunityToAdd,
-      {
-        upsert: true,
-        new: true,
-        setDefaultsOnInsert: true,
-        runValidators: true,
-      }
-    );
+    let result = await opportunitiesSchema.create(data);
 
     sendSuccessResponse({
       res,

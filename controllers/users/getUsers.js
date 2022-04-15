@@ -6,19 +6,11 @@ import {
 
 export const getUsers = async (req, res) => {
   try {
-    let query = req.body?.query || {};
-
-    if (!query?.is_deleted) {
-      query = { ...query, is_deleted: false };
-    }
-
-    let users = await usersSchema.find({ ...query }, { password: 0 });
-
-    console.log(users, "Name");
-
+    const query = req?.body || {};
+    const data = await usersSchema.find({ ...query }, { password: 0 });
     sendSuccessResponse({
       res,
-      data: users,
+      data,
     });
   } catch (err) {
     sendFailResponse({

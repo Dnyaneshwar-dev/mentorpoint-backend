@@ -27,3 +27,11 @@ const sendFailResponse = (params) => {
 };
 
 export { sendSuccessResponse, sendFailResponse };
+
+// ,
+//   "slots": [
+//     {
+//       "start_time": "2022-04-15T15:03:50.577Z",
+//       "end_time": "2022-04-15T15:04:50.577Z"
+//     }
+//   ]

@@ -1,14 +1,14 @@
-import opportunitiesSchema from "../../models/opportunities.js";
+import servicesSchema from "../../models/services.js";
 import {
   sendFailResponse,
   sendSuccessResponse,
 } from "../../utils/responses.js";
 
-export const getOpportunities = async (req, res) => {
+export const getServices = async (req, res) => {
   try {
     let query = req?.query || {};
 
-    let data = await opportunitiesSchema.find(query);
+    let data = await servicesSchema.find(query);
 
     sendSuccessResponse({
       res,

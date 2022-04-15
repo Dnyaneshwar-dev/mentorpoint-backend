@@ -6,20 +6,23 @@ import {
   sendSuccessResponse,
 } from "../../utils/responses.js";
 
-export const addUser = async (req, res) => {
+export const updateUsers = async (req, res) => {
   try {
     const userToAdd = req?.body;
+    const _id = userToAdd?._id;
 
-    const password = generateHashedPassword();
-    let data = await usersSchema.create({ ...userToAdd, password });
-    delete data["password"];
+    const data = await usersSchema
+      .findByIdAndUpdate(_id, userToAdd, {
+        new: true,
+        runValidators: true,
+      })
+      .select("-password");
 
     sendSuccessResponse({
       res,
       data,
     });
   } catch (err) {
-    console.log(err);
     sendFailResponse({
       res,
       err: err,

@@ -4,20 +4,21 @@ import {
   sendSuccessResponse,
 } from "../../utils/responses.js";
 
-export const getOpportunities = async (req, res) => {
+export const deleteOpportunities = async (req, res) => {
   try {
-    let query = req?.query || {};
+    let _id = req?.body?._id;
 
-    let data = await opportunitiesSchema.find(query);
+    let result = await opportunitiesSchema.findByIdAndDelete(_id);
 
     sendSuccessResponse({
       res,
-      data,
+      data: result,
     });
   } catch (err) {
     sendFailResponse({
       res,
-      message: err?.message,
+      err: err,
+      statusCode: 500,
     });
   }
 };
