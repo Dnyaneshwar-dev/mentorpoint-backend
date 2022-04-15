@@ -20,6 +20,7 @@ const sessionsSchema = new mongoose.Schema(
     is_deleted: { type: Boolean, trim: true, default: false },
     rating: [String],
     feedback: { type: String },
+    chats: [Object],
   },
   { timestamps: true }
 );

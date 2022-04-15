@@ -7,6 +7,7 @@ const opportunitiesSchema = new mongoose.Schema(
     job_title: { type: String, required: true },
     description: { type: String, required: false },
     application_link: { type: String, required: true },
+    date: { type: Date },
     tag: [String],
   },
   { timestamps: true }

@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/api/user", UsersRouter);
+app.use("/api/users", UsersRouter);
 app.use("/api/sessions", SessionRouter);
-app.use("/api/opportunity", OpportunitiesRouter);
+app.use("/api/opportunities", OpportunitiesRouter);
 app.get("/", (req, res) => {
   res.send("Mentorpoint");
 });

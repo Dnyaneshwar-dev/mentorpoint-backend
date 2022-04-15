@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const usersSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
-    bio: { type: String, required: true },
+    bio: { type: String, required: false },
+    headline: { type: String, required: false },
     address: { type: String, trim: true },
-    company: "",
+    company: { type: String },
     mobile_number: {
       type: String,
       trim: true,
@@ -33,6 +34,7 @@ const usersSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    skills: [String],
   },
   { timestamps: true }
 );
