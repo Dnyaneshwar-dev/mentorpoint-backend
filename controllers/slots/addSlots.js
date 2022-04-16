@@ -15,6 +15,7 @@ export const addSlots = async (req, res) => {
     });
   } catch (err) {
     sendFailResponse({
+      err,
       res,
       message: err?.message,
     });

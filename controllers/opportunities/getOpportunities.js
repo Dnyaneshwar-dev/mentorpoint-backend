@@ -6,7 +6,7 @@ import {
 
 export const getOpportunities = async (req, res) => {
   try {
-    let query = req?.query || {};
+    let query = req?.body || {};
 
     let data = await opportunitiesSchema.find(query);
 

@@ -15,6 +15,12 @@ const servicesSchema = new mongoose.Schema(
       enum: ["created", "inProgress", "over"],
       default: "created",
     },
+    type: {
+      type: String,
+      required: true,
+      enum: ["personal", "bootcamp"],
+      default: "personal",
+    },
     is_deleted: { type: Boolean, trim: true, default: false },
     rating: [String],
     feedback: { type: String },

@@ -2,7 +2,7 @@ import CryptoJS from "crypto-js";
 import generator from "generate-password";
 
 export const generateHashedPassword = (password) => {
-  var generatedPassword = password
+  let generatedPassword = password
     ? [password]
     : generator.generateMultiple(1, {
         length: 10,
@@ -12,11 +12,11 @@ export const generateHashedPassword = (password) => {
 
   console.log(password, generatedPassword);
 
-  var cipher = CryptoJS.AES.encrypt(
+  let cipher = CryptoJS.AES.encrypt(
     generatedPassword[0].toString(),
     process.env.CRYPTO_JS_KEY
   );
-  var hashedPassword = cipher.toString();
+  let hashedPassword = cipher.toString();
 
   return hashedPassword;
 };

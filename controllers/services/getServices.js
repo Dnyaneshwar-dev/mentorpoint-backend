@@ -6,7 +6,7 @@ import {
 
 export const getServices = async (req, res) => {
   try {
-    let query = req?.query || {};
+    let query = req?.body || {};
 
     let data = await servicesSchema.find(query);
 
