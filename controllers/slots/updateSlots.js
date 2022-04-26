@@ -9,10 +9,14 @@ export const updateSlots = async (req, res) => {
     const slotsToUpdate = req?.body;
     let _id = slotsToUpdate?._id;
     console.log(_id);
-    let data = await slotsSchema.findByIdAndUpdate(_id, slotsToUpdate, {
-      new: true,
-      runValidators: true,
-    });
+    let data = await slotsSchema.findByIdAndUpdate(
+      _id,
+      { $push: { mentor_slots: slotsToUpdate } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     sendSuccessResponse({
       res,

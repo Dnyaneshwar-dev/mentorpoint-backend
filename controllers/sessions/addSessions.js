@@ -4,16 +4,29 @@ import {
   sendFailResponse,
 } from "../../utils/responses.js";
 import sessionsSchema from "../../models/sessions.js";
+import slotsSchema from "../../models/slots.js";
 
 export const addSessions = async (req, res) => {
   try {
     const sessionToAdd = req?.body;
-    const data = await sessionsSchema.create(sessionToAdd);
+    const { mentor_id, slot } = sessionToAdd;
+
+    const slotResponse = await slotsSchema.findOneAndUpdate(
+      { mentor_id },
+      {
+        $push: { user_slots: slot },
+      }
+    );
+
+    delete sessionToAdd["mentor_id"];
+    delete sessionToAdd["slot"];
+    const sessionResponse = await sessionsSchema.create(sessionToAdd);
     sendSuccessResponse({
       res,
-      data,
+      slotResponse,
+      sessionResponse,
     });
-  } catch {
+  } catch (err) {
     sendFailResponse({
       res,
       err: err,

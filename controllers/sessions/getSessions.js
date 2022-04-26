@@ -6,7 +6,7 @@ import {
 
 export const getSessions = async (req, res) => {
   try {
-    const query = req?.body || {};
+    const query = req?.query || {};
     const data = await sessionsSchema.find(query).populate("service_id");
     sendSuccessResponse({
       res,

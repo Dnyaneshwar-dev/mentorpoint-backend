@@ -6,7 +6,7 @@ import {
 
 export const getUsers = async (req, res) => {
   try {
-    const query = req?.body || {};
+    const query = req?.query || {};
     const data = await usersSchema.find({ ...query }, { password: 0 });
     sendSuccessResponse({
       res,

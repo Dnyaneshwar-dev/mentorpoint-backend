@@ -12,8 +12,8 @@ const servicesSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: ["created", "inProgress", "over"],
-      default: "created",
+      enum: ["active", "inactive"],
+      default: "active",
     },
     type: {
       type: String,
