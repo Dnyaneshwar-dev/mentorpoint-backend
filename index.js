@@ -1,4 +1,6 @@
 import "./connections/config.js";
+import "./events/newevent.js";
+
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -8,6 +10,9 @@ import { ServicesRouter } from "./routers/services.js";
 import { OpportunitiesRouter } from "./routers/opportunities.js";
 import { SessionRouter } from "./routers/sessions.js";
 import { SlotsRouter } from "./routers/slots.js";
+
+import parseEvent from "./events/eventparser.js";
+import createEvent from "./events/newevent.js";
 
 connectToMongoDb();
 const app = express();
@@ -30,4 +35,12 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(5000, () => {
   console.log(`Mentorpoint Server is running on port ${PORT}.`);
+});
+
+createEvent(
+  parseEvent({
+    title: "Ram Ram",
+  })
+).then((res) => {
+  console.log(res);
 });

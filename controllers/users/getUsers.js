@@ -7,6 +7,7 @@ import {
 export const getUsers = async (req, res) => {
   try {
     const query = req?.query || {};
+    console.log(query);
     const data = await usersSchema.find({ ...query }, { password: 0 });
     sendSuccessResponse({
       res,
