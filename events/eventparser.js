@@ -21,6 +21,13 @@ const parseEvent = (data) => {
     attendees: [
       { email: "dnyaneshwarbtecs35@gmail.com" },
       { email: "dnyaneshwar.ware.in@gmail.com" },
+      { email: "amaan.shaikh@walchandsangli.ac.in" },
+      {
+        email: "sanket.sonawane@walchandsangli.ac.in",
+      },
+      {
+        email: "vinayak.gaikwad@walchandsangli.ac.in",
+      },
     ],
   };
   return event;

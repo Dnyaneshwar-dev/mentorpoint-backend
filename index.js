@@ -39,8 +39,6 @@ app.listen(5000, () => {
 
 createEvent(
   parseEvent({
-    title: "Ram Ram",
+    summary: "Jevayla Ya",
   })
-).then((res) => {
-  console.log(res);
-});
+).then((res) => console.log(res));
