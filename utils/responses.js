@@ -10,7 +10,7 @@ const sendSuccessResponse = (params) => {
 };
 
 const sendFailResponse = (params) => {
-  let { res, statusCode = 502, err } = params;
+  let { res, statusCode = 400, err } = params;
   let errorToSend = err;
   if (err?.code === 11000) {
     let keyValues = getMongoDuplicateKeyError(err?.keyValue);

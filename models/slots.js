@@ -4,7 +4,7 @@ const slotsSchema = new mongoose.Schema(
   {
     date: { type: Date, required: true },
     mentor_id: { type: mongoose.Types.ObjectId, ref: "users", required: true },
-    slots: {
+    mentor_slots: {
       type: [
         {
           start_time: { type: Date, required: true },
@@ -13,6 +13,15 @@ const slotsSchema = new mongoose.Schema(
         },
       ],
       validate: [(val) => val.length > 0, "{PATH}"],
+    },
+    user_slots: {
+      type: [
+        {
+          start_time: { type: Date, required: true },
+          end_time: { type: Date, required: true },
+          is_booked: { type: Boolean, default: false },
+        },
+      ],
     },
   },
   { timestamps: true }
