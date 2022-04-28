@@ -1,4 +1,5 @@
 import express from "express";
+import { addChats } from "../controllers/sessions/addChats.js";
 import { addSessions } from "../controllers/sessions/addSessions.js";
 import { deleteSessions } from "../controllers/sessions/deleteSessions.js";
 import { getSessions } from "../controllers/sessions/getSessions.js";
@@ -10,5 +11,6 @@ SessionRouter.get("/", getSessions);
 SessionRouter.post("/", addSessions);
 SessionRouter.put("/", updateSessions);
 SessionRouter.delete("/", deleteSessions);
+SessionRouter.post("/chats", addChats);
 
 export { SessionRouter };
