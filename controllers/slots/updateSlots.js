@@ -7,11 +7,11 @@ import slotsSchema from "../../models/slots.js";
 export const updateSlots = async (req, res) => {
   try {
     const slotsToUpdate = req?.body;
-    let _id = slotsToUpdate?._id;
-    console.log(_id);
-    let data = await slotsSchema.findByIdAndUpdate(
-      _id,
-      { $push: { mentor_slots: slotsToUpdate } },
+    let mentor_id = slotsToUpdate?.mentor_id;
+    const { mentor_slots } = slotsToUpdate;
+    let data = await slotsSchema.findOneAndUpdate(
+      { mentor_id },
+      { $push: { mentor_slots } },
       {
         new: true,
         runValidators: true,
@@ -23,6 +23,7 @@ export const updateSlots = async (req, res) => {
       data,
     });
   } catch (err) {
+    console.log(err);
     sendFailResponse({
       res,
       message: err?.message,

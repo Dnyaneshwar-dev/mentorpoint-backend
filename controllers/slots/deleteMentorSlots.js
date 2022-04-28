@@ -8,7 +8,7 @@ export const deleteMentorSlots = async (req, res) => {
   try {
     const { slotId, _id } = req.body;
     const data = await slotsSchema.findByIdAndUpdate(_id, {
-      $pull: { mentorSlots: { _id: slotId } },
+      $pull: { mentor_slots: { _id: slotId } },
     });
     sendSuccessResponse({
       res,

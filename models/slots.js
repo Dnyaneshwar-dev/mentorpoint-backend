@@ -3,7 +3,12 @@ import mongoose from "mongoose";
 const slotsSchema = new mongoose.Schema(
   {
     date: { type: Date, required: true },
-    mentor_id: { type: mongoose.Types.ObjectId, ref: "users", required: true },
+    mentor_id: {
+      type: mongoose.Types.ObjectId,
+      ref: "users",
+      required: true,
+      unique: true,
+    },
     mentor_slots: {
       type: [
         {
@@ -12,7 +17,7 @@ const slotsSchema = new mongoose.Schema(
           is_booked: { type: Boolean, default: false },
         },
       ],
-      validate: [(val) => val.length > 0, "{PATH}"],
+      // validate: [(val) => val.length > 0, "{PATH}"],
     },
     user_slots: {
       type: [
