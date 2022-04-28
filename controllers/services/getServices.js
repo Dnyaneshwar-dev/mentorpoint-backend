@@ -8,7 +8,6 @@ export const getServices = async (req, res) => {
   try {
     let query = req?.query || {};
     let data = await servicesSchema.find(query);
-
     sendSuccessResponse({
       res,
       data,

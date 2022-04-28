@@ -36,9 +36,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(5000, () => {
   console.log(`Mentorpoint Server is running on port ${PORT}.`);
 });
-
-createEvent(
-  parseEvent({
-    summary: "Jevayla Ya",
-  })
-).then((res) => console.log(res));
