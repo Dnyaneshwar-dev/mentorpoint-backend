@@ -9,7 +9,15 @@ const sessionsSchema = new mongoose.Schema(
       required: true,
       ref: "services",
     },
-    chats: [Object],
+    chats: {
+      type: [
+        {
+          user_id: { type: mongoose.Types.ObjectId, required: true },
+          message: { type: String, required: true },
+          time: { type: Date, required: true },
+        },
+      ],
+    },
   },
   { timestamps: true }
 );
