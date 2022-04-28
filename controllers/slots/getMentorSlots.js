@@ -6,7 +6,7 @@ import slotsSchema from "../../models/slots.js";
 import servicesSchema from "../../models/services.js";
 import moment from "moment";
 
-export const getUserSlots = async (req, res) => {
+export const getMentorSlots = async (req, res) => {
   try {
     const query = req?.query || {};
     const service_id = query?.service_id;

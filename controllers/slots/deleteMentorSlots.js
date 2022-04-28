@@ -6,10 +6,13 @@ import slotsSchema from "../../models/slots.js";
 
 export const deleteMentorSlots = async (req, res) => {
   try {
-    const { slotId, _id } = req.body;
-    const data = await slotsSchema.findByIdAndUpdate(_id, {
-      $pull: { mentor_slots: { _id: slotId } },
-    });
+    const { slot_id, mentor_id } = req.body;
+    const data = await slotsSchema.findOneAndUpdate(
+      { mentor_id },
+      {
+        $pull: { mentor_slots: { _id: slot_id } },
+      }
+    );
     sendSuccessResponse({
       res,
       data,

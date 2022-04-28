@@ -9,7 +9,6 @@ import { updateSlots } from "./updateSlots.js";
 export const addSlots = async (req, res) => {
   try {
     const slotsToAdd = req?.body;
-    console.log(slotsToAdd);
     const { mentor_id } = req?.body;
     const prevSlots = await slotsSchema.findOne({ mentor_id });
 

@@ -1,5 +1,5 @@
 import { addSlots } from "../controllers/slots/addSlots.js";
-import { getUserSlots } from "../controllers/slots/getUserSlots.js";
+import { getMentorSlots } from "../controllers/slots/getMentorSlots.js";
 import { updateSlots } from "../controllers/slots/updateSlots.js";
 import { deleteSlots } from "../controllers/slots/deleteSlots.js";
 import express from "express";
@@ -8,7 +8,7 @@ import { getSlots } from "../controllers/slots/getSlots.js";
 
 const SlotsRouter = express.Router();
 
-SlotsRouter.get("/userslots", getUserSlots);
+SlotsRouter.get("/userslots", getMentorSlots);
 SlotsRouter.get("/", getSlots);
 SlotsRouter.post("/", addSlots);
 SlotsRouter.put("/", updateSlots);
