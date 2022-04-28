@@ -6,8 +6,9 @@ import {
 
 export const deleteServices = async (req, res) => {
   try {
-    let _id = req?.body?._id;
-
+    console.log(req.query);
+    let { _id } = req?.query;
+    console.log(_id);
     let data = await servicesSchema.findByIdAndDelete(_id);
 
     sendSuccessResponse({

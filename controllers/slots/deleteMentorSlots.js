@@ -6,7 +6,7 @@ import slotsSchema from "../../models/slots.js";
 
 export const deleteMentorSlots = async (req, res) => {
   try {
-    const { slot_id, mentor_id } = req.body;
+    const { slot_id, mentor_id } = req.query;
     const data = await slotsSchema.findOneAndUpdate(
       { mentor_id },
       {
