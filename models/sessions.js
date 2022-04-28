@@ -12,9 +12,10 @@ const sessionsSchema = new mongoose.Schema(
     chats: {
       type: [
         {
-          user_id: { type: mongoose.Types.ObjectId, required: true },
-          message: { type: String, required: true },
-          time: { type: Date, required: true },
+          _id: { type: String, required: true },
+          text: { type: String, required: true },
+          createdAt: { type: Date, required: true },
+          user: { type: Object },
         },
       ],
     },
