@@ -4,18 +4,10 @@ import {
 } from "../../utils/responses.js";
 import sessionsSchema from "../../models/sessions.js";
 
-export const addChats = async (req, res) => {
+export const getChats = async (req, res) => {
   try {
-    const { _id, chats } = req?.body;
-    console.log(req.body);
-    let data = await sessionsSchema.findByIdAndUpdate(
-      _id,
-      { $push: { chats } },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const query = req?.query;
+    let data = await sessionsSchema.find(query);
 
     sendSuccessResponse({
       res,
