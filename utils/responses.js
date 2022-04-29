@@ -4,7 +4,7 @@ const sendSuccessResponse = (params) => {
   const { res, code, data } = params;
 
   res.status(200).send({
-    status: "success",
+    ok: 1,
     data,
   });
 };
@@ -21,7 +21,7 @@ const sendFailResponse = (params) => {
   }
 
   res.status(statusCode).send({
-    status: "failed",
+    ok: 0,
     err: errorToSend,
   });
 };

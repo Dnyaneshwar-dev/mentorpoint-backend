@@ -17,6 +17,7 @@ export const getMentorSlots = async (req, res) => {
       { mentor_id, date },
       { mentor_slots: 1, user_slots: 1 }
     );
+    console.log(slotData);
     let data = [];
     if (slotData == null) {
       sendSuccessResponse({

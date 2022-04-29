@@ -12,7 +12,7 @@ const signIn = async (req, res) => {
     if (!user || user == null) {
       sendFailResponse({
         res,
-        message: "User Not Found",
+        err: "User Not Found",
         code: 404,
       });
       return null;
