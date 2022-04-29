@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { generateHashedPassword } from "../../utils/passwords.js";
+
 import usersSchema from "../../models/users.js";
 import {
   sendFailResponse,
@@ -8,18 +9,14 @@ import {
 
 export const addUser = async (req, res) => {
   try {
-    const userToAdd = req?.body;
-
-    const password = generateHashedPassword();
-    let data = await usersSchema.create({ ...userToAdd, password });
-    delete data["password"];
-
+    var { email, password, name } = req?.body;
+    password = generateHashedPassword(password);
+    let data = await usersSchema.create({ email, name, password });
     sendSuccessResponse({
       res,
       data,
     });
   } catch (err) {
-    console.log(err);
     sendFailResponse({
       res,
       err: err,

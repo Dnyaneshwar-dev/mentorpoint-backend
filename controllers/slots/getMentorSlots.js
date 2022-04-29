@@ -11,13 +11,23 @@ export const getMentorSlots = async (req, res) => {
     const query = req?.query || {};
     const service_id = query?.service_id;
     const mentor_id = query?.mentor_id;
+    const date = query?.date;
     const { duration } = await servicesSchema.findById(service_id);
-    const { mentor_slots, user_slots } = await slotsSchema.findOne(
-      { mentor_id },
+    const slotData = await slotsSchema.findOne(
+      { mentor_id, date },
       { mentor_slots: 1, user_slots: 1 }
     );
-    console.log(duration, mentor_slots);
     let data = [];
+    if (slotData == null) {
+      sendSuccessResponse({
+        res,
+        data,
+      });
+      return null;
+    }
+    const { mentor_slots, user_slots } = slotData;
+    console.log(duration, mentor_slots);
+
     mentor_slots.map((slot) => {
       let start_time = moment(slot.start_time);
       let end_time = moment(slot.end_time);
