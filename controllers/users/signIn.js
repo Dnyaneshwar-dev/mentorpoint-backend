@@ -1,4 +1,5 @@
 import usersSchema from "../../models/users.js";
+import jwt from "jsonwebtoken";
 import {
   sendFailResponse,
   sendSuccessResponse,
@@ -19,11 +20,11 @@ const signIn = async (req, res) => {
     }
 
     const p = user.password;
-
+    const token = jwt.sign({ user }, process.env.CRYPTO_JS_KEY);
     if (password == decryptPassword(p)) {
       sendSuccessResponse({
         res,
-        data: user,
+        data: token,
       });
     } else {
       sendFailResponse({
