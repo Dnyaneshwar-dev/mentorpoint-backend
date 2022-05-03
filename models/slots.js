@@ -24,7 +24,7 @@ const slotsSchema = new mongoose.Schema(
         {
           start_time: { type: Date, required: true },
           end_time: { type: Date, required: true },
-          is_booked: { type: Boolean, default: false },
+          is_booked: { type: Boolean, default: true },
         },
       ],
     },

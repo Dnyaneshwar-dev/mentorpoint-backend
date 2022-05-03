@@ -1,26 +1,22 @@
-const parseEvent = (data) => {
-  const eventStartTime = new Date();
-  eventStartTime.setMinutes(eventStartTime.getMinutes());
-  const eventEndTime = new Date();
-  eventEndTime.setMinutes(eventEndTime.getMinutes() + 45);
-  const event = {
-    summary: data.title ? data.title : "Event",
-    location: data?.location,
-    description: data?.description,
+const parseEvent = (event) => {
+  const eventData = {
+    summary: event.summary ? event.summary : "Event",
+    location: event?.location,
+    description: event?.description,
     visibility: "public",
     remindOnRespondedEventsOnly: "true",
     colorId: 1,
     start: {
-      dateTime: eventStartTime,
+      dateTime: event?.start_time,
       timeZone: "America/Denver",
     },
     end: {
-      dateTime: eventEndTime,
+      dateTime: event?.end_time,
       timeZone: "America/Denver",
     },
-    attendees: [{ email: "dnyaneshwarbtecs35@gmail.com" }],
+    attendees: event?.attendees,
   };
-  return event;
+  return eventData;
 };
 
 export default parseEvent;

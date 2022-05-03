@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const sessionsSchema = new mongoose.Schema(
   {
     user_id: { type: mongoose.Types.ObjectId, required: true, ref: "users" },
-    start_time: { type: Date, required: true },
+    mentor_id: { type: mongoose.Types.ObjectId, required: true, ref: "users" },
+    start_time: { type: String, required: true },
+    resume_link: { type: String, required: true },
     service_id: {
       type: mongoose.Types.ObjectId,
       required: true,

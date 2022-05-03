@@ -9,7 +9,7 @@ import { updateSessions } from "../controllers/sessions/updateSessions.js";
 const SessionRouter = express.Router();
 
 SessionRouter.get("/", getSessions);
-SessionRouter.post("/", addSessions);
+SessionRouter.post("/booking", addSessions);
 SessionRouter.put("/", updateSessions);
 SessionRouter.delete("/", deleteSessions);
 SessionRouter.post("/chats", addChats);
