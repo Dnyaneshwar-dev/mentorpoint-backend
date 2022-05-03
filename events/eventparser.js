@@ -18,17 +18,7 @@ const parseEvent = (data) => {
       dateTime: eventEndTime,
       timeZone: "America/Denver",
     },
-    attendees: [
-      { email: "dnyaneshwarbtecs35@gmail.com" },
-      { email: "dnyaneshwar.ware.in@gmail.com" },
-      { email: "amaan.shaikh@walchandsangli.ac.in" },
-      {
-        email: "sanket.sonawane@walchandsangli.ac.in",
-      },
-      {
-        email: "vinayak.gaikwad@walchandsangli.ac.in",
-      },
-    ],
+    attendees: [{ email: "dnyaneshwarbtecs35@gmail.com" }],
   };
   return event;
 };

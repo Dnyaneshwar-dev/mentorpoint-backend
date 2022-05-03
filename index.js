@@ -10,7 +10,7 @@ import { ServicesRouter } from "./routers/services.js";
 import { OpportunitiesRouter } from "./routers/opportunities.js";
 import { SessionRouter } from "./routers/sessions.js";
 import { SlotsRouter } from "./routers/slots.js";
-
+import sendInvitation from "./mails/mailer.js";
 import parseEvent from "./events/eventparser.js";
 import createEvent from "./events/newevent.js";
 
@@ -42,3 +42,5 @@ app.listen(5000, () => {
 //     summary: "Jevayla Ya",
 //   })
 // ).then((res) => console.log(res));
+
+sendInvitation();
