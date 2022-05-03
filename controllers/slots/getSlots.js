@@ -7,7 +7,6 @@ import {
 export const getSlots = async (req, res) => {
   try {
     const query = req?.query || {};
-    console.log(query);
     const data = await slotsSchema.find(query);
     sendSuccessResponse({
       res,

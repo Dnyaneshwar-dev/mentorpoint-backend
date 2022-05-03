@@ -4,7 +4,6 @@ const servicesSchema = new mongoose.Schema(
   {
     mentor_id: { type: mongoose.Types.ObjectId, required: true, ref: "users" },
     mentor_name: { type: String, required: true },
-    date: { type: Date, required: true },
     duration: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String },

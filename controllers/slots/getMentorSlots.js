@@ -9,15 +9,15 @@ import moment from "moment";
 export const getMentorSlots = async (req, res) => {
   try {
     const query = req?.query || {};
+    console.log(query);
     const service_id = query?.service_id;
     const mentor_id = query?.mentor_id;
     const date = query?.date;
     const { duration } = await servicesSchema.findById(service_id);
     const slotData = await slotsSchema.findOne(
-      { mentor_id, date },
+      { mentor_id: mentor_id, date: date },
       { mentor_slots: 1, user_slots: 1 }
     );
-    console.log(slotData);
     let data = [];
     if (slotData == null) {
       sendSuccessResponse({

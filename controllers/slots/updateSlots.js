@@ -10,8 +10,10 @@ export const updateSlots = async (req, res) => {
     let mentor_id = slotsToUpdate?.mentor_id;
     console.log(slotsToUpdate);
     const { mentor_slots } = slotsToUpdate;
+    const { date } = slotsToUpdate;
+
     let data = await slotsSchema.findOneAndUpdate(
-      { mentor_id },
+      { mentor_id, date },
       { $push: { mentor_slots } },
       {
         new: true,

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const slotsSchema = new mongoose.Schema(
   {
-    date: { type: Date, required: true },
+    date: { type: String, required: true },
     mentor_id: {
       type: mongoose.Types.ObjectId,
       ref: "users",

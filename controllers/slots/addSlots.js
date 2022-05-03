@@ -9,8 +9,9 @@ import { updateSlots } from "./updateSlots.js";
 export const addSlots = async (req, res) => {
   try {
     const slotsToAdd = req?.body;
-    const { mentor_id } = req?.body;
-    const prevSlots = await slotsSchema.findOne({ mentor_id });
+    console.log(slotsToAdd);
+    const { mentor_id, date } = req?.body;
+    const prevSlots = await slotsSchema.findOne({ mentor_id, date });
 
     if (prevSlots?.mentor_slots) {
       return updateSlots(req, res);
