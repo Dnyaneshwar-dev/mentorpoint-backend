@@ -43,4 +43,4 @@ app.listen(5000, () => {
 //   })
 // ).then((res) => console.log(res));
 
-sendInvitation();
+// sendInvitation();
