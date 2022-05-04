@@ -6,7 +6,7 @@ import slotsSchema from "../../models/slots.js";
 import servicesSchema from "../../models/services.js";
 import moment from "moment";
 
-export const getMentorSlots = async (req, res) => {
+export const getUserSlots = async (req, res) => {
   try {
     const query = req?.query || {};
     console.log(query);
@@ -49,9 +49,16 @@ export const getMentorSlots = async (req, res) => {
     });
     data = data.map((slot) => {
       user_slots?.map((userSlot) => {
-        const sTime = new Date(slot.start_time);
-        const usTime = new Date(userSlot.start_time);
-        if (sTime.getTime() === usTime.getTime()) {
+        const slotStartTime = new Date(slot.start_time);
+        const slotEndTime = new Date(slot.end_time);
+        const userSlotStartTime = new Date(userSlot.start_time);
+        const userSlotEndTime = new Date(userSlot.end_time);
+        if (
+          (slotStartTime.getTime() >= userSlotStartTime.getTime() &&
+            slotStartTime.getTime() <= userSlotEndTime.getTime()) ||
+          (slotEndTime.getTime() >= userSlotStartTime.getTime() &&
+            slotEndTime.getTime() <= userSlotEndTime.getTime())
+        ) {
           slot = { ...slot, is_booked: true };
         }
       });
