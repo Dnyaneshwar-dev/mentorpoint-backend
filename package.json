@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/Dnyaneshwar-dev/mentorpoint-backend/issues"
   },
+  "engines":{
+    "node":"16.14.2"
+  },
   "homepage": "https://github.com/Dnyaneshwar-dev/mentorpoint-backend#readme",
   "dependencies": {
     "body-parser": "^1.19.2",
