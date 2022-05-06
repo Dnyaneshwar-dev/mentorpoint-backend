@@ -55,8 +55,8 @@ export const getUserSlots = async (req, res) => {
         const userSlotEndTime = new Date(userSlot.end_time);
         if (
           (slotStartTime.getTime() >= userSlotStartTime.getTime() &&
-            slotStartTime.getTime() <= userSlotEndTime.getTime()) ||
-          (slotEndTime.getTime() >= userSlotStartTime.getTime() &&
+            slotStartTime.getTime() < userSlotEndTime.getTime()) ||
+          (slotEndTime.getTime() > userSlotStartTime.getTime() &&
             slotEndTime.getTime() <= userSlotEndTime.getTime())
         ) {
           slot = { ...slot, is_booked: true };

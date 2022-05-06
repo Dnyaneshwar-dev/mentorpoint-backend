@@ -29,7 +29,7 @@ export const addSessions = async (req, res) => {
     try {
       const event = await createEventData(sessionToAdd);
       const eventParsed = parseEvent(event.event);
-
+      console.log(event);
       const mailData = event.mail;
       try {
         sendInvitation(mailData);
