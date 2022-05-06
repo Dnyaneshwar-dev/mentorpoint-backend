@@ -8,6 +8,7 @@ import slotsSchema from "../../models/slots.js";
 import createEventData from "../../events/createEventData.js";
 import createEvent from "../../events/newevent.js";
 import parseEvent from "../../events/eventparser.js";
+import sendInvitation from "../../mails/mailer.js";
 
 export const addSessions = async (req, res) => {
   try {
@@ -27,7 +28,12 @@ export const addSessions = async (req, res) => {
     }
     try {
       const event = await createEventData(sessionToAdd);
-      const eventParsed = parseEvent(event);
+      const eventParsed = parseEvent(event.event);
+
+      const mailData = event.mail;
+      try {
+        sendInvitation(mailData);
+      } catch (error) {}
 
       await createEvent(eventParsed);
     } catch (error) {}
