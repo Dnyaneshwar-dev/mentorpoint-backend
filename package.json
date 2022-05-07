@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/Dnyaneshwar-dev/mentorpoint-backend/issues"
   },
+  "engines": {
+    "node": "16.14.2"
+  },
   "homepage": "https://github.com/Dnyaneshwar-dev/mentorpoint-backend#readme",
   "dependencies": {
     "body-parser": "^1.19.2",
@@ -27,9 +30,14 @@
     "generate-password": "^1.7.0",
     "google-auth-library": "^8.0.1",
     "googleapis": "^100.0.0",
+    "imagemin": "^8.0.1",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.2",
     "mongoose": "^6.2.9",
+    "multer": "^1.4.4",
     "nodemailer": "^6.7.4",
     "nodemon": "^2.0.15"
   }

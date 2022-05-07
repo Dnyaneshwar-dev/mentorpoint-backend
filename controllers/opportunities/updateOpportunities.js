@@ -8,7 +8,6 @@ export const updateOpportunities = async (req, res) => {
   try {
     let opportunityToUpdate = req?.body;
     let _id = opportunityToUpdate?._id;
-    console.log(opportunityToUpdate);
 
     let result = await opportunitiesSchema.findByIdAndUpdate(
       _id,
