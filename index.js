@@ -10,17 +10,22 @@ import { ServicesRouter } from "./routers/services.js";
 import { OpportunitiesRouter } from "./routers/opportunities.js";
 import { SessionRouter } from "./routers/sessions.js";
 import { SlotsRouter } from "./routers/slots.js";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import sendInvitation from "./mails/mailer.js";
 import parseEvent from "./events/eventparser.js";
 import createEvent from "./events/newevent.js";
 
 connectToMongoDb();
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(__dirname));
 
 app.use("/api/users", UsersRouter);
 app.use("/api/services", ServicesRouter);

@@ -13,7 +13,6 @@ export const addServices = async (req, res) => {
     let mentor_id = mongoose.Types.ObjectId(serviceToAdd?.mentor_id);
 
     let { name } = await usersSchema.findById(mentor_id);
-    console.log(name);
 
     let data = await servicesSchema.create({
       ...serviceToAdd,
