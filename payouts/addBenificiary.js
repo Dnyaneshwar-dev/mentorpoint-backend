@@ -1,7 +1,7 @@
 import apiClient from "./apiClient.js";
 import usersSchema from "../models/users.js";
 import generateToken from "./generateToken.js";
-const addBeneficiery = async (id) => {
+const addBeneficiary = async (id) => {
   const userData = await usersSchema.findOne(
     { _id: id },
     {
@@ -19,7 +19,7 @@ const addBeneficiery = async (id) => {
     return { ok: 0, message: "UPI ID Not added" };
   }
 
-  const beneficiery = {
+  const beneficiary = {
     name: userData?.name,
     phone: userData?.mobile,
     email: userData?.email,
@@ -32,7 +32,7 @@ const addBeneficiery = async (id) => {
 
   const cashfreeResponse = await apiClient.post(
     "/addBeneficiary",
-    beneficiery,
+    beneficiary,
     {
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -47,4 +47,4 @@ const addBeneficiery = async (id) => {
   }
 };
 
-export default addBeneficiery;
+export default addBeneficiary;
