@@ -12,8 +12,8 @@ export const addSlots = async (req, res) => {
     console.log(slotsToAdd);
     const { mentor_id, date } = req?.body;
     const prevSlots = await slotsSchema.findOne({ mentor_id, date });
-
-    if (prevSlots?.mentor_slots) {
+    console.log(prevSlots);
+    if (prevSlots != null || prevSlots?.mentor_slots) {
       return updateSlots(req, res);
     }
 

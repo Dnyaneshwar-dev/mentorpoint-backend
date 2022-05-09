@@ -9,6 +9,7 @@ import createEventData from "../../events/createEventData.js";
 import createEvent from "../../events/newevent.js";
 import parseEvent from "../../events/eventparser.js";
 import sendInvitation from "../../mails/mailer.js";
+import usersSchema from "../../models/users.js";
 
 export const addSessions = async (req, res) => {
   try {
@@ -26,10 +27,11 @@ export const addSessions = async (req, res) => {
     if (slotResponse == null) {
       throw "Slot Not Found";
     }
+    var fee;
     try {
       const event = await createEventData(sessionToAdd);
       const eventParsed = parseEvent(event.event);
-      console.log(event);
+      fee = event.fee;
       const mailData = event.mail;
       try {
         sendInvitation(mailData);
@@ -41,8 +43,18 @@ export const addSessions = async (req, res) => {
     delete sessionToAdd["slot"];
     delete sessionToAdd["end_time"];
     const sessionResponse = await sessionsSchema.create(sessionToAdd);
+    const userResponse = await usersSchema.updateOne(
+      { _id: mentor_id },
+      {
+        $inc: { current_balance: fee, total_earning: fee },
+      }
+    );
+    console.log(userResponse);
+    if (userResponse == null) {
+      throw "Unable to update earning";
+    }
     if (sessionResponse == null) {
-      return "Unable to add Session";
+      throw "Unable to add Session";
     }
 
     sendSuccessResponse({

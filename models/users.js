@@ -30,6 +30,8 @@ const usersSchema = new mongoose.Schema(
     instagram_url: { type: String, required: false },
     github_url: { type: String, required: false },
     password: { type: String, required: false },
+    current_balance: { type: Number, default: 0 },
+    total_earning: { type: Number, default: 0 },
     is_deleted: {
       type: Boolean,
       default: false,

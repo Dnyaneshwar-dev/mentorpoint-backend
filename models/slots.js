@@ -7,7 +7,6 @@ const slotsSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "users",
       required: true,
-      unique: true,
     },
     mentor_slots: {
       type: [

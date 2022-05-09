@@ -9,7 +9,9 @@ import usersSchema from "../../../models/users.js";
 
 export const addProfile = async (req, res) => {
   try {
-    const { _id } = req?.query;
+    const { _id } = req?.body;
+    console.log(_id);
+    console.log(req?.files);
     const folderId = process.env.FOLDER_ID_DRIVE;
     const { mimetype, path } = req?.files[0];
     const { sourcePath, destinationPath } = await compress(path);

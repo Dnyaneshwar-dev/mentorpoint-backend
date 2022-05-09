@@ -18,7 +18,6 @@ const createEventData = async (slot) => {
   attendees.push({ email: mentor.email });
 
   const service = await services.findOne({ _id: slot.service_id });
-  console.log(service);
   const summary = service?.title;
 
   const description = service?.description;
@@ -37,6 +36,7 @@ const createEventData = async (slot) => {
       mentorname: mentor.name,
       user_mail: user.email,
     },
+    fee: service.fee,
   };
 };
 
