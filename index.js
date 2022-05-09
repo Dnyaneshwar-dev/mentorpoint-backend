@@ -15,6 +15,7 @@ import { dirname } from "path";
 import sendInvitation from "./mails/mailer.js";
 import parseEvent from "./events/eventparser.js";
 import createEvent from "./events/newevent.js";
+import verifyVPA from "./payouts/verifyVPA.js";
 
 connectToMongoDb();
 const app = express();
@@ -49,3 +50,11 @@ app.listen(PORT, () => {
 // ).then((res) => console.log(res));
 
 // sendInvitation();
+
+verifyVPA()
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
