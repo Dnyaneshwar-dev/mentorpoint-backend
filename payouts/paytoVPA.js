@@ -1,19 +1,19 @@
-import apiClient from "./apiClient";
-import generateToken from "./generateToken";
+import apiClient from "./apiClient.js";
+import generateToken from "./generateToken.js";
 import { v4 as uuidv4 } from "uuid";
 const paytoVPA = async (id, amount) => {
-  const token = generateToken();
+  const token = await generateToken();
   const beneficiary = await apiClient.get(`/getBeneficiary/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  if (beneficiary.status == "ERROR")
+  if (beneficiary.status == "ERROR") {
     return { ok: 0, message: beneficiary.message };
-  else {
+  } else {
     const transferId = uuidv4();
     try {
-      const authToken = generateToken();
+      const authToken = await generateToken();
       const cashfreeResponse = await apiClient.post(
         "/requestTransfer",
         {
@@ -29,10 +29,10 @@ const paytoVPA = async (id, amount) => {
         }
       );
 
-      if (cashfreeResponse.status == "SUCCESS") {
-        return { ok: 1, message: cashfreeResponse.message };
+      if (cashfreeResponse?.data?.status == "SUCCESS") {
+        return { ok: 1, message: cashfreeResponse?.data?.message };
       } else {
-        return { ok: 0, message: cashfreeResponse.message };
+        return { ok: 0, message: cashfreeResponse?.data?.message };
       }
     } catch (error) {
       return { ok: 0, message: error };

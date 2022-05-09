@@ -16,6 +16,7 @@ import sendInvitation from "./mails/mailer.js";
 import parseEvent from "./events/eventparser.js";
 import createEvent from "./events/newevent.js";
 import verifyVPA from "./payouts/verifyVPA.js";
+import paytoVPA from "./payouts/paytoVPA.js";
 
 connectToMongoDb();
 const app = express();
@@ -52,6 +53,14 @@ app.listen(PORT, () => {
 // sendInvitation();
 
 verifyVPA()
+  .then((res) => {
+    console.log(res.data.message);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+paytoVPA("JOHN1", 100)
   .then((res) => {
     console.log(res);
   })
