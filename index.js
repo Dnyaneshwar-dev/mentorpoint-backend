@@ -44,26 +44,3 @@ app.listen(PORT, () => {
   console.log(`Mentorpoint Server is running on port ${PORT}.`);
 });
 
-// createEvent(
-//   parseEvent({
-//     summary: "Jevayla Ya",
-//   })
-// ).then((res) => console.log(res));
-
-// sendInvitation();
-
-verifyVPA()
-  .then((res) => {
-    console.log(res.data.message);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-paytoVPA("JOHN1", 100)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });

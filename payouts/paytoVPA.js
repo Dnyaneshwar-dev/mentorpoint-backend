@@ -3,6 +3,7 @@ import generateToken from "./generateToken.js";
 import { v4 as uuidv4 } from "uuid";
 const paytoVPA = async (id, amount) => {
   const token = await generateToken();
+  console.log(token);
   const beneficiary = await apiClient.get(`/getBeneficiary/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
